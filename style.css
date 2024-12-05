@@ -1,0 +1,460 @@
+/* СТИЛИ ДЛЯ РАБОТЫ С АВТОРИЗАЦИЕЙ И ОСНОВНЫМ НАПОЛНЕНИЕМ САЙТА */
+
+/* Стили для переходов между авторизацией и сайтом */
+.site{ 
+    display: none;
+    font-display: row;
+}
+
+/* Стили для показа слайда при работе с авторизацией и основным сайтом */
+.show {
+    display: block;
+}
+
+/* Стили для не показа слайда при работе с авторизацией и основным сайтом */
+.not {
+    display: none; 
+}
+
+/* Стили для вывода ошибок при авторизации */
+.label_error {
+    color: red;
+}
+
+/* Стили для кнопки входа в авторизации */
+.btn_log {
+    background-color: #3cb9e1;
+    margin: 5%;
+}
+
+/* Стили для самой формы авторизации */
+.form_auth {
+    padding-left: 5%;
+    width: 50%;
+    line-height: 1.5;
+}
+
+/* Стили для подписей вопросов в форме авторизации */
+.form_auth > fieldset {
+    border: none;
+}
+
+/* Стили для полей ввода в форме авторизации */
+.inp_auth {
+    height: 2em;
+    width: 15em;
+    margin-left: 5%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #1841CD;
+}
+
+/* Стили для радиокнопок выбора пола */
+.gender_inp {
+    padding-left: 5%;
+}
+
+
+/* ОСНОВНЫЕ СТИЛИ */
+
+* {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Объявление переменных */
+:root {
+    --el: 0; /* Переменная для управления смещением карусели */
+    --wi: 800px; /* Переменная для указания ширины в галерее */
+    --hi: 450px; /* Переменная для указания высоты в галерее */
+}
+
+/* Основные стили для body */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #a6e329;
+    color: #1841CD;
+    text-shadow: 0.2px 0.2px 0.5px #1841CD;
+}
+
+/* Стили для header */
+header {
+    background-color: #fff;
+    height: 50px;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/* Стили для логотипа */
+.logo {
+    height: 100%;
+}
+
+/* Стили для навигации */
+button {
+    background-color: #a6e329;
+    border: none;
+    border-radius: 50%;
+    width: 10em;
+    height: 3em;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Стили для блока логина в шапке сайта */
+.login_header {
+    word-break: break-all;
+    width: 10em;
+    height: 3em;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Стили для кнопки выхода */
+.btn_exit {
+    width: 6em;
+    height: 1.75em;
+}
+
+/* Стили для main */
+main {
+    flex-grow: 1;
+}
+
+/* Стили для заголовков */
+.heading {
+    margin: 1.5%;
+    text-align: center;
+}
+
+/* Стили для footer */
+footer {
+    background-color: #3cb9e1;
+    height: 40px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-around;
+    color: black;
+    align-items: center;
+    line-height: 1.5;
+    font-size: 18px;
+}
+
+/* Стили иконок соц сетей */
+.social-f img {
+    height: 2rem;
+    align-items: center;
+}
+
+/* Стили для адреса */
+.address {
+    text-align: center;
+}
+
+/* Стили для информации о праве */
+.SPB {
+    text-align: center;
+}
+
+/* Стили для скрытия элементов */
+.no {
+    display: none;
+}
+
+/* Стили для выделея текущего раздела */
+.active {
+    font-weight: bold;
+    color: #1841CD; 
+}
+
+/* Стили для ссылок */
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* СТИЛИ ДЛЯ СТРАНИЦ */
+
+/* СТИЛИ ДЛЯ СТРАНИЦЫ С ОПИСАНИЕМ */
+/* Стили для текста с описанием на основной странице */
+.description {
+    padding-left: 5%;
+    padding-right: 6%;
+    text-indent: 30px;
+    line-height: 1.75;
+}
+
+
+/* СТИЛИ ДЛЯ СТРАНИЦЫ СО СЛОВАРЁМ */
+/* Стили для кнопки поиска в словаре */
+.key_value {
+    display: flex;
+    padding: 3%;
+}
+
+/* Стили для кнопки поиска в словаре */
+.btn_search {
+    background-color: #3cb9e1;
+}
+
+/* Стили для строки ввода слова для поиска по словарю */
+.inp_search {
+    margin-left: 50px;
+    height: 3em;
+    width: 15em;
+}
+
+/* Стили для пунктов кнопок в словаре */
+.dict_out > button {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5%;
+    color: #1841CD;
+    text-shadow: 0.2px 0.2px 0.5px #1841CD;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Стили для вывода описания терминов */
+.out_value {
+    padding-top: 5%;
+    margin-left: 10%;
+    width: 70%;
+}
+
+
+/* СТИЛИ ДЛЯ СТРАНИЦЫ С ГАЛЕРЕЕЙ */
+/* Стили для изображений */
+.def > img {
+    height: var(--hi);
+    width: var(--wi);
+}
+
+/* Стили для иконок кнопок */
+.icon {
+    width: 50px; 
+    height: 50px; 
+}
+
+/* Стили для элементов карусели */
+.def {
+    overflow: hidden; 
+    width: var(--wi);
+}
+
+/* Стили для основного контейнера */
+.pseudo_main {
+    width: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+/* Стили для обертки карусели */
+.wrapper {
+    width: var(--wi);
+    display: flex; 
+    overflow: hidden;
+}
+
+/* Стили для карусели */
+.carousel {
+    display: flex; 
+    transition: transform 1s; 
+    transform: translateX(var(--el)); 
+}
+
+/* Стили для кнопок управления */
+.buttons_carousel {
+    display: flex;
+    justify-content: space-between;
+    width: 940px;
+    transition: opacity 1s;
+    position: relative;
+    top: -270px;
+    opacity: 0;
+}
+
+/* Эффект при наведении на карусель */
+.carousel:hover ~ .buttons_carousel {
+    opacity: 0.5; 
+}
+
+/* Эффект при наведении на кнопки */
+.buttons_carousel:hover {
+    opacity: 0.5; 
+}
+
+/* Стили для подписи картинки */
+figcaption {
+    text-align: center;
+}
+
+/* Стили для подписи счётчика слайдов */
+.count_img {
+    margin-bottom: 2%;
+}
+
+
+/* СТИЛИ ДЛЯ ТЕСТА */
+
+/* Стили для всего теста, включая форму, результат и кнопку */
+.test_res {
+    display: flex;
+}
+
+/* Стили для самой формы теста */
+.form_test {
+    padding-left: 5%;
+    width: 50%;
+    line-height: 1.5;
+}
+
+/* Стили для подписей в тесте */
+.form_test > fieldset {
+    border: none;
+}
+
+/* Стили для полей ввода в форме теста */
+.inp_test {
+    height: 2em;
+    width: 15em;
+    margin-left: 5%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #1841CD;
+}
+
+/* Стили для кнопки, расположенной в форме теста */
+.form_test > button {
+    background-color: #3cb9e1;
+    margin: 5%;
+}
+
+/* Стили для того, что не находится в форме: результат и кнопка "Ещё раз" */
+.test_no_form {
+    padding-left: 5%;
+}
+
+/* Стили для кнопки "Ещё раз" */
+.btnReset {
+    background-color: #3cb9e1;
+}
+
+/* Стили для проверки теста (если не прошло) */
+.check:invalid {
+    border: 2px solid red;
+}
+
+/* Стили для проверки теста (если прошло) */
+.check:valid {
+    border: 2px solid green;
+}
+
+/* Стили для дива, если ответ неверный */
+.error {
+    color: red;
+}
+
+/* Стили для дива, если ответ верный */
+.OK {
+    color: black;
+}
+
+/* Стили для групп радиокнопок */
+.answers {
+    padding-left: 5%;
+}
+
+/* Стили для обозначения количества верных ответов в результате */
+.cogr {
+    color: green;
+    font-size: 50px;
+    text-align: center;
+}
+
+/* Стили для обозначения количества верных ответов в результате */
+.almcogr {
+    color: yellow;
+    font-size: 50px;
+    text-align: center;
+}
+
+/* Стили для обозначения количества верных ответов в результате */
+.notcogr {
+    color: red;
+    font-size: 50px;
+    text-align: center;
+}
+
+
+/* СТИЛИ ДЛЯ ЛИЧНОГО КАБИНЕТА */
+
+/* Стили для вывода данный о пользователе */
+.account_res {
+    padding-left: 5%;
+    line-height: 2;
+}
+
+/* Стили для вывода данный о пользователе, которые он ввёл сам */
+.inp {
+    padding-left: 3%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Палитра
+#4276b7	
+#3caad6	
+#3cb9e1	
+#21b96b	
+#a6e329
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
