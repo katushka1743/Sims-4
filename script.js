@@ -75,8 +75,11 @@ function exit() {
     form_auth.reset(); // Сбрасываем форму авторизации
 }
 
-const btn_exit = document.getElementById("btn_exit"); // Получаем элемент кнопки для выхода
+const btn_exit = document.getElementById("btn_exit"); // Получаем элемент кнопки для выхода в хедере
 btn_exit.addEventListener("click", exit); // Добавляем обработчик события для кнопки выхода
+
+const btn_out = document.getElementById("btn_out"); // Получаем элемент кнопки для выхода в личном кабинете
+btn_out.addEventListener("click", exit); // Добавляем обработчик события для кнопки выхода
 
 
 
@@ -253,125 +256,113 @@ const form_test = document.forms.test;
 form_test.addEventListener('submit', (event) => {
     // Отмена стандартного поведения отправки формы
     event.preventDefault();
+    // Инициализация переменной для хранения результата
+    let result = 0;
     
-    // Проверка на наличие пустых полей в форме
-    if (form_test.q1.validity.valueMissing || 
-        form_test.q2.validity.valueMissing || 
-        form_test.q3.validity.valueMissing || 
-        !form_test.q4.value || 
-        !form_test.q5.value || 
-        !form_test.q6.value) {
-        // Предупреждение о пустых полях
-        alert('Пустые поля((');
+    // Добавление валидных ответов на вопросы q1, q2 и q3 к результату
+    result += form_test.q1.validity.valid; 
+    result += form_test.q2.validity.valid; 
+    result += form_test.q3.validity.valid; 
+    
+    // Преобразование значений из полей q4, q5 и q6 в числа и добавление к результату
+    result += Number(form_test.q4.value); 
+    result += Number(form_test.q5.value); 
+    result += Number(form_test.q6.value); 
+    
+    // Отображение результата в элементе с id 'res'
+    document.getElementById('res').innerText = result;
+    document.getElementById('inp_testing_result').innerText = result;
+    
+    // Добавление класса 'check' к элементам с id 'ch1', 'ch2' и 'ch3'
+    document.getElementById('ch1').classList.add('check');
+    document.getElementById('ch2').classList.add('check');
+    document.getElementById('ch3').classList.add('check');
+    
+    // Проверка валидности ответа на вопрос q1
+    if (form_test.q1.validity.valid) {
+        document.getElementById('error1').innerText = 'Да, это правильный ответ!';
+        document.getElementById('error1').classList.add('OK'); // Добавление класса для правильного ответа
     } else {
-        // Инициализация переменной для хранения результата
-        let result = 0;
-        
-        // Добавление валидных ответов на вопросы q1, q2 и q3 к результату
-        result += form_test.q1.validity.valid; 
-        result += form_test.q2.validity.valid; 
-        result += form_test.q3.validity.valid; 
-        
-        // Преобразование значений из полей q4, q5 и q6 в числа и добавление к результату
-        result += Number(form_test.q4.value); 
-        result += Number(form_test.q5.value); 
-        result += Number(form_test.q6.value); 
-        
-        // Отображение результата в элементе с id 'res'
-        document.getElementById('res').innerText = result;
-        document.getElementById('inp_testing_result').innerText = result;
-        
-        // Добавление класса 'check' к элементам с id 'ch1', 'ch2' и 'ch3'
-        document.getElementById('ch1').classList.add('check');
-        document.getElementById('ch2').classList.add('check');
-        document.getElementById('ch3').classList.add('check');
-        
-        // Проверка валидности ответа на вопрос q1
-        if (form_test.q1.validity.valid) {
-            document.getElementById('error1').innerText = 'Да, это правильный ответ!';
-            document.getElementById('error1').classList.add('OK'); // Добавление класса для правильного ответа
-        } else {
-            document.getElementById('error1').innerText = 'О нет, это неправильный ответ! Правильный ответ: Программирование.';
-            document.getElementById('error1').classList.add('error'); // Добавление класса для неправильного ответа
-        } 
-        
-        // Проверка валидности ответа на вопрос q2
-        if (form_test.q2.validity.valid) {
-            document.getElementById('error2').innerText = 'Да, это правильный ответ!';
-            document.getElementById('error2').classList.add('OK'); // Добавление класса для правильного ответа
-        } else {
-            document.getElementById('error2').innerText = 'О нет, это неправильный ответ! Правильный ответ: Кулинария.';
-            document.getElementById('error2').classList.add('error'); // Добавление класса для неправильного ответа
-        } 
+        document.getElementById('error1').innerText = 'О нет, это неправильный ответ! Правильный ответ: Программирование.';
+        document.getElementById('error1').classList.add('error'); // Добавление класса для неправильного ответа
+    } 
+    
+    // Проверка валидности ответа на вопрос q2
+    if (form_test.q2.validity.valid) {
+        document.getElementById('error2').innerText = 'Да, это правильный ответ!';
+        document.getElementById('error2').classList.add('OK'); // Добавление класса для правильного ответа
+    } else {
+        document.getElementById('error2').innerText = 'О нет, это неправильный ответ! Правильный ответ: Кулинария.';
+        document.getElementById('error2').classList.add('error'); // Добавление класса для неправильного ответа
+    } 
 
-        // Проверка валидности ответа на вопрос q3
-        if (form_test.q3.validity.valid) {
-            document.getElementById('error3').innerText = 'Да, это правильный ответ!';
-            document.getElementById('error3').classList.add('OK'); // Добавление класса для правильного ответа
-        } else {
-            document.getElementById('error3').innerText = 'О нет, это неправильный ответ! Правильный ответ: Виллоу Крик.';
-            document.getElementById('error3').classList.add('error'); // Добавление класса для неправильного ответа
-        } 
+    // Проверка валидности ответа на вопрос q3
+    if (form_test.q3.validity.valid) {
+        document.getElementById('error3').innerText = 'Да, это правильный ответ!';
+        document.getElementById('error3').classList.add('OK'); // Добавление класса для правильного ответа
+    } else {
+        document.getElementById('error3').innerText = 'О нет, это неправильный ответ! Правильный ответ: Виллоу Крик.';
+        document.getElementById('error3').classList.add('error'); // Добавление класса для неправильного ответа
+    } 
 
-        // Проверка валидности ответа на вопрос q4
-        if (Number(form_test.q4.value) == 1) {
-            document.getElementById('error4').innerText = 'Да, это правильный ответ!';
-            document.getElementById('error4').classList.add('OK'); // Добавление класса для правильного ответа
+    // Проверка валидности ответа на вопрос q4
+    if (Number(form_test.q4.value) == 1) {
+        document.getElementById('error4').innerText = 'Да, это правильный ответ!';
+        document.getElementById('error4').classList.add('OK'); // Добавление класса для правильного ответа
+    } else {
+        document.getElementById('error4').innerText = 'О нет, это неправильный ответ! Правильный ответ: Зомби.';
+        document.getElementById('error4').classList.add('error'); // Добавление класса для неправильного ответа
+    }
+
+    // Проверка валидности ответа на вопрос q5
+    if (Number(form_test.q5.value) == 1) {
+        document.getElementById('error5').innerText = 'Да, это правильный ответ!';
+        document.getElementById('error5').classList.add('OK'); // Добавление класса для правильного ответа
+    } else {
+        document.getElementById('error5').innerText = 'О нет, это неправильный ответ! Правильный ответ: Механика.';
+        document.getElementById('error5').classList.add('error'); // Добавление класса для неправильного ответа
+    }
+
+    // Проверка валидности ответа на вопрос q6
+    if (Number(form_test.q6.value) == 1) {
+        document.getElementById('error6').innerText = 'Да, это правильный ответ!';
+        document.getElementById('error6').classList.add('OK'); // Добавление класса для правильного ответа
+    } else {
+        document.getElementById('error6').innerText = 'О нет, это неправильный ответ! Правильный ответ: Управление временем.';
+        document.getElementById('error6').classList.add('error'); // Добавление класса для неправильного ответа
+    }
+
+    // Запрет на изменение ответов после проверки
+    form_test.q1.disabled = true; 
+    form_test.q2.disabled = true; 
+    form_test.q3.disabled = true; 
+    
+    // Запрет на изменение радиокнопок после проверки
+    document.getElementById('q4a').disabled = true; 
+    document.getElementById('q4b').disabled = true; 
+    document.getElementById('q4c').disabled = true; 
+    document.getElementById('q4d').disabled = true; 
+
+    document.getElementById('q5a').disabled = true; 
+    document.getElementById('q5b').disabled = true; 
+    document.getElementById('q5c').disabled = true; 
+    document.getElementById('q5d').disabled = true; 
+
+    document.getElementById('q6a').disabled = true; 
+    document.getElementById('q6b').disabled = true; 
+    document.getElementById('q6c').disabled = true; 
+    document.getElementById('q6d').disabled = true; 
+
+    // Условие для красивого оформления результата
+    if (result == 6) { // Все ответы правильные
+        document.getElementById('res').classList.add('cogr'); // Класс для полного успеха
+    } else {
+        if (result == 4 || result == 5) { // Почти все ответы правильные
+            document.getElementById('res').classList.add('almcogr'); // Класс для частичного успеха
         } else {
-            document.getElementById('error4').innerText = 'О нет, это неправильный ответ! Правильный ответ: Зомби.';
-            document.getElementById('error4').classList.add('error'); // Добавление класса для неправильного ответа
+            document.getElementById('res').classList.add('notcogr'); // Класс для неудачи
         }
-
-        // Проверка валидности ответа на вопрос q5
-        if (Number(form_test.q5.value) == 1) {
-            document.getElementById('error5').innerText = 'Да, это правильный ответ!';
-            document.getElementById('error5').classList.add('OK'); // Добавление класса для правильного ответа
-        } else {
-            document.getElementById('error5').innerText = 'О нет, это неправильный ответ! Правильный ответ: Механика.';
-            document.getElementById('error5').classList.add('error'); // Добавление класса для неправильного ответа
-        }
-
-        // Проверка валидности ответа на вопрос q6
-        if (Number(form_test.q6.value) == 1) {
-            document.getElementById('error6').innerText = 'Да, это правильный ответ!';
-            document.getElementById('error6').classList.add('OK'); // Добавление класса для правильного ответа
-        } else {
-            document.getElementById('error6').innerText = 'О нет, это неправильный ответ! Правильный ответ: Управление временем.';
-            document.getElementById('error6').classList.add('error'); // Добавление класса для неправильного ответа
-        }
-
-        // Запрет на изменение ответов после проверки
-        form_test.q1.disabled = true; 
-        form_test.q2.disabled = true; 
-        form_test.q3.disabled = true; 
-        
-        // Запрет на изменение радиокнопок после проверки
-        document.getElementById('q4a').disabled = true; 
-        document.getElementById('q4b').disabled = true; 
-        document.getElementById('q4c').disabled = true; 
-        document.getElementById('q4d').disabled = true; 
-
-        document.getElementById('q5a').disabled = true; 
-        document.getElementById('q5b').disabled = true; 
-        document.getElementById('q5c').disabled = true; 
-        document.getElementById('q5d').disabled = true; 
-
-        document.getElementById('q6a').disabled = true; 
-        document.getElementById('q6b').disabled = true; 
-        document.getElementById('q6c').disabled = true; 
-        document.getElementById('q6d').disabled = true; 
-
-        // Условие для красивого оформления результата
-        if (result == 6) { // Все ответы правильные
-            document.getElementById('res').classList.add('cogr'); // Класс для полного успеха
-        } else {
-            if (result == 4 || result == 5) { // Почти все ответы правильные
-                document.getElementById('res').classList.add('almcogr'); // Класс для частичного успеха
-            } else {
-                document.getElementById('res').classList.add('notcogr'); // Класс для неудачи
-            }
-        }
-    }   
+    }
 });
 
 // Обработчик события для кнопки сброса в тесте

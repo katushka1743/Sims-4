@@ -412,6 +412,13 @@ figcaption {
     padding-left: 3%;
 }
 
+/* Стили для кнопки выхода в личном кабинете */
+.btn_out {
+    background-color: #3cb9e1;
+    margin-left: 5%;
+    margin-top: 3%;
+}
+
 
 
 
