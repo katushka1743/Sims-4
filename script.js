@@ -73,6 +73,61 @@ function exit() {
     document.getElementById('name_header').innerText = 'Ваш логин'; // Устанавливаем значение по умолчанию в заголовок
 
     form_auth.reset(); // Сбрасываем форму авторизации
+
+    // Сброс формы теста к исходным значениям при выходе
+    form_test.reset();
+
+    // Очистка текста результата
+    document.getElementById('res').innerText = '';
+    document.getElementById('inp_testing_result').innerText = '';
+
+    // Удаление класса 'check' у элементов, связанных с ответами
+    document.getElementById('ch1').classList.remove('check');
+    document.getElementById('ch2').classList.remove('check');
+    document.getElementById('ch3').classList.remove('check');
+
+    // Очистка текстов ошибок для всех вопросов
+    document.getElementById('error1').innerText = '';
+    document.getElementById('error2').innerText = '';
+    document.getElementById('error3').innerText = '';
+    document.getElementById('error4').innerText = '';
+    document.getElementById('error5').innerText = '';
+    document.getElementById('error6').innerText = '';
+
+    // Удаление классов 'OK' и 'error' для всех сообщений об ошибках
+    document.getElementById('error1').classList.remove('OK');
+    document.getElementById('error1').classList.remove('error');
+    document.getElementById('error2').classList.remove('OK');
+    document.getElementById('error2').classList.remove('error');
+    document.getElementById('error3').classList.remove('OK');
+    document.getElementById('error3').classList.remove('error');
+    document.getElementById('error4').classList.remove('OK');
+    document.getElementById('error4').classList.remove('error');
+    document.getElementById('error5').classList.remove('OK');
+    document.getElementById('error5').classList.remove('error');
+    document.getElementById('error6').classList.remove('OK');
+    document.getElementById('error6').classList.remove('error');
+
+    // Разблокировка полей формы после сброса
+    form_test.q1.disabled = false; 
+    form_test.q2.disabled = false; 
+    form_test.q3.disabled = false; 
+
+    // Разблокировка радиокнопок после сброса
+    document.getElementById('q4a').disabled = false;
+    document.getElementById('q4b').disabled = false;
+    document.getElementById('q4c').disabled = false;
+    document.getElementById('q4d').disabled = false;
+
+    document.getElementById('q5a').disabled = false;
+    document.getElementById('q5b').disabled = false;
+    document.getElementById('q5c').disabled = false;
+    document.getElementById('q5d').disabled = false;
+
+    document.getElementById('q6a').disabled = false;
+    document.getElementById('q6b').disabled = false;
+    document.getElementById('q6c').disabled = false;
+    document.getElementById('q6d').disabled = false;
 }
 
 const btn_exit = document.getElementById("btn_exit"); // Получаем элемент кнопки для выхода в хедере
