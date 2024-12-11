@@ -108,6 +108,7 @@ button {
     height: 3em;
     font-size: 18px;
     cursor: url(img/Plumbob-click.png) 12.5 25,
+    url(img/Plumbob-click.cur) 12.5 25,
     pointer;
 }
 
