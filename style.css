@@ -94,6 +94,11 @@ header {
     height: 100%;
 }
 
+/* Стили для кнопки логотипа */
+.logotip {
+    background-color: #a6e32900;
+}
+
 /* Стили для навигации */
 button {
     background-color: #a6e329;
@@ -102,7 +107,8 @@ button {
     width: 10em;
     height: 3em;
     font-size: 18px;
-    cursor: pointer;
+    cursor: url(img/Plumbob-click.png) 12.5 25,
+    pointer;
 }
 
 /* Стили для блока логина в шапке сайта */

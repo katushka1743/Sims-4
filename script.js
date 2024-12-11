@@ -40,6 +40,7 @@ form_auth.addEventListener('submit', (event) => { // Обработчик соб
 
     // Если все проверки пройдены, переключаем страницы
     if (test) {
+        document.getElementById('navigation').classList.remove('no'); // Сокрытие кнопок навигации в форме авторизации       
         togglePages(); // Вызов функции для переключения страниц
     }
 });
@@ -64,6 +65,7 @@ function togglePages() {
 
 function exit() {
     mainPages[curPageMain].classList.add('not'); // Скрываем текущую страницу (элемент)
+    document.getElementById('navigation').classList.add('no');     
     
     curPageMain = 0; // Возвращаемся на страницу авторизации (индекс 0)
     
@@ -72,6 +74,16 @@ function exit() {
 
     document.getElementById('name_header').innerText = 'Ваш логин'; // Устанавливаем значение по умолчанию в заголовок
 
+    resetForm(); // Вызов функции очищения
+}
+
+function resetForm() {
+    pages[curPage].classList.add('no'); // Скрываем текущую страницу
+    pages[0].classList.remove('no'); // Показываем первую страницу
+    buttons_nav[curPage].classList.remove('active'); // Убираем активный класс с текущей кнопки
+    buttons_nav[0].classList.add('active'); // Добавляем активный класс к первой кнопке
+    curPage = 0; // Обновляем счётчик текущей страницы
+
     form_auth.reset(); // Сбрасываем форму авторизации
 
     // Сброс формы теста к исходным значениям при выходе
@@ -79,7 +91,7 @@ function exit() {
 
     // Очистка текста результата
     document.getElementById('res').innerText = '';
-    document.getElementById('inp_testing_result').innerText = '';
+    document.getElementById('inp_testing_result').innerText = 'Результата пока нет, но вы можете пройти тест!';
 
     // Удаление класса 'check' у элементов, связанных с ответами
     document.getElementById('ch1').classList.remove('check');
@@ -146,6 +158,15 @@ let buttons_nav = document.getElementsByClassName('btn_nav'); // Массив к
 
 // Обработчик события для кнопки "Меню 1" (ОПИСАНИЕ)
 document.getElementById('menu1').addEventListener('click', () => { 
+    pages[curPage].classList.add('no'); // Скрываем текущую страницу
+    pages[0].classList.remove('no'); // Показываем первую страницу
+    buttons_nav[curPage].classList.remove('active'); // Убираем активный класс с текущей кнопки
+    buttons_nav[0].classList.add('active'); // Добавляем активный класс к первой кнопке
+    curPage = 0; // Обновляем счётчик текущей страницы
+});
+
+// Обработчик события для кнопки "Логотип" (ОПИСАНИЕ)
+document.getElementById('logotip').addEventListener('click', () => { 
     pages[curPage].classList.add('no'); // Скрываем текущую страницу
     pages[0].classList.remove('no'); // Показываем первую страницу
     buttons_nav[curPage].classList.remove('active'); // Убираем активный класс с текущей кнопки
@@ -239,6 +260,7 @@ items.forEach((item, index) => {
 
 // Обработчик события для кнопки поиска
 btn_search.addEventListener('click', () => {
+    out_value.innerText = ''; // Очистка вывода при нажатии на кнопку
     dict_out.innerHTML = ''; // Очистка вывода перед новым поиском
     items.forEach((item, index) => {
         // Проверка, содержит ли элемент поиска введённый текст (без учёта регистра)
@@ -422,60 +444,7 @@ form_test.addEventListener('submit', (event) => {
 
 // Обработчик события для кнопки сброса в тесте
 document.getElementById('btnReset').addEventListener('click', () => {
-    // Сброс формы к исходным значениям
-    form_test.reset();
-
-    // Очистка текста результата
-    document.getElementById('res').innerText = '';
-    document.getElementById('inp_testing_result').innerText = '';
-
-    // Удаление класса 'check' у элементов, связанных с ответами
-    document.getElementById('ch1').classList.remove('check');
-    document.getElementById('ch2').classList.remove('check');
-    document.getElementById('ch3').classList.remove('check');
-
-    // Очистка текстов ошибок для всех вопросов
-    document.getElementById('error1').innerText = '';
-    document.getElementById('error2').innerText = '';
-    document.getElementById('error3').innerText = '';
-    document.getElementById('error4').innerText = '';
-    document.getElementById('error5').innerText = '';
-    document.getElementById('error6').innerText = '';
-
-    // Удаление классов 'OK' и 'error' для всех сообщений об ошибках
-    document.getElementById('error1').classList.remove('OK');
-    document.getElementById('error1').classList.remove('error');
-    document.getElementById('error2').classList.remove('OK');
-    document.getElementById('error2').classList.remove('error');
-    document.getElementById('error3').classList.remove('OK');
-    document.getElementById('error3').classList.remove('error');
-    document.getElementById('error4').classList.remove('OK');
-    document.getElementById('error4').classList.remove('error');
-    document.getElementById('error5').classList.remove('OK');
-    document.getElementById('error5').classList.remove('error');
-    document.getElementById('error6').classList.remove('OK');
-    document.getElementById('error6').classList.remove('error');
-
-    // Разблокировка полей формы после сброса
-    form_test.q1.disabled = false; 
-    form_test.q2.disabled = false; 
-    form_test.q3.disabled = false; 
-
-    // Разблокировка радиокнопок после сброса
-    document.getElementById('q4a').disabled = false;
-    document.getElementById('q4b').disabled = false;
-    document.getElementById('q4c').disabled = false;
-    document.getElementById('q4d').disabled = false;
-
-    document.getElementById('q5a').disabled = false;
-    document.getElementById('q5b').disabled = false;
-    document.getElementById('q5c').disabled = false;
-    document.getElementById('q5d').disabled = false;
-
-    document.getElementById('q6a').disabled = false;
-    document.getElementById('q6b').disabled = false;
-    document.getElementById('q6c').disabled = false;
-    document.getElementById('q6d').disabled = false;
+    resetForm();
 });
 
 

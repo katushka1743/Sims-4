@@ -9,9 +9,9 @@
 </head>
 <body>
     <header>
-    <img src="img/The_Sims_4.svg" alt="logo" class="logo" /> <!-- Логотип -->
+    <button id="logotip" class="logotip"><img src="img/The_Sims_4.svg" alt="logo" class="logo" /></button> <!-- Логотип -->
     <div class="menu_btn">
-        <nav class="navigation"> <!-- Навигационное меню -->
+        <nav id="navigation" class="navigation no"> <!-- Навигационное меню -->
             <button id="menu1" class="btn_nav active">Описание</button>  
             <button id="menu2" class="btn_nav">Словарь</button> 
             <button id="menu3" class="btn_nav">Галерея</button> 
@@ -31,7 +31,7 @@
             <form class="form_auth" name="auth" novalidate> <!-- Форма авторизации -->
                 <fieldset class="f_name"> <!-- Поле для ввода логина -->
                     <legend>Введите ваш логин (он должен состоять из символов русского алфавита и цифр, иметь количество символов от 4 до 10):</legend>
-                    <input class="check inp_auth" type="text" name="login" id="login" pattern="[А-яЁё]+\d+" placeholder="Введите логин" minlength="4" maxlength="10" required><br>
+                    <input class="check inp_auth" type="text" name="login" id="login" pattern="^(?=.*[0-9])[А-Яа-яЁё0-9]{4,10}$" placeholder="Введите логин" minlength="4" maxlength="10" required><br>
                     <label class="label_error" for="login"></label> <!-- Метка для ошибок ввода -->
                 </fieldset>
 
@@ -44,7 +44,7 @@
                 <fieldset class="f_gender"> <!-- Поле для выбора пола -->
                     <legend>Выберите ваш пол: </legend>
                     <div class="gender_inp">
-                        <input type="radio" name="input_gender" value="Мужской" checked="true">Мужской 
+                        <input type="radio" name="input_gender" value="Мужской" >Мужской 
                         <input type="radio" name="input_gender" value="Женский" >Женский 
                     </div>
                 </fieldset>
@@ -228,7 +228,7 @@
                     </div>
                     <div class="testing_result" id="testing_result">
                         <p class="p_testing_result">Результат теста: </p>
-                        <div id="inp_testing_result" class="inp inp_testing_result"></div> <!-- Вывод результата теста -->
+                        <div id="inp_testing_result" class="inp inp_testing_result">Результата пока нет, но вы можете пройти тест!</div> <!-- Вывод результата теста -->
                     </div>
                 </div>
                 <button class="btn_out" id="btn_out">Выйти</button> <!-- Кнопка выхода в личном кабинете -->
