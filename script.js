@@ -74,15 +74,17 @@ function exit() {
 
     document.getElementById('name_header').innerText = 'Ваш логин'; // Устанавливаем значение по умолчанию в заголовок
 
-    resetForm(); // Вызов функции очищения
-}
-
-function resetForm() {
     pages[curPage].classList.add('no'); // Скрываем текущую страницу
     pages[0].classList.remove('no'); // Показываем первую страницу
     buttons_nav[curPage].classList.remove('active'); // Убираем активный класс с текущей кнопки
     buttons_nav[0].classList.add('active'); // Добавляем активный класс к первой кнопке
     curPage = 0; // Обновляем счётчик текущей страницы
+    
+    resetForm(); // Вызов функции очищения
+}
+
+function resetForm() {
+    
 
     form_auth.reset(); // Сбрасываем форму авторизации
 
