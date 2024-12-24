@@ -446,7 +446,7 @@ form_test.addEventListener('submit', (event) => {
 
 // Обработчик события для кнопки сброса в тесте
 document.getElementById('btnReset').addEventListener('click', () => {
-    resetForm();
+    resetForm(); 
 });
 
 
